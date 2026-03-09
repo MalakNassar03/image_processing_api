@@ -26,8 +26,6 @@ const processImage = async (
     `${filename}-${width}x${height}.jpg`
   );
 
-  console.log('Looking for image at:', inputPath);
-  console.log('Will save thumb to:', outputPath);
   //check if the og image exists if not return null
   if (!fs.existsSync(inputPath)) {
     return null;
