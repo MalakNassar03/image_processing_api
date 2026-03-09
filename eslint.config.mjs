@@ -1,18 +1,23 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "prettier"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
-  ],
-  "rules": {
-    "prettier/prettier": "error",
-    "no-console": "warn"
-  },
-  "env": {
-    "node": true,
-    "es2020": true
-  }
-}
+import typescript from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import prettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
+
+export default [
+    {
+        files: ['**/*.ts'],
+        languageOptions: {
+            parser: tsParser,
+        },
+        plugins: {
+            '@typescript-eslint': typescript,
+            prettier: prettier,
+        },
+        rules: {
+            ...typescript.configs['recommended'].rules,
+            ...prettierConfig.rules,
+            'prettier/prettier': 'error',
+            'no-console': 'warn',
+        },
+    },
+];
